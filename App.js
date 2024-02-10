@@ -3,6 +3,7 @@ import { StatusBar, Text } from "react-native";
 import { NavigationContainer as Container } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import WelcomeScreen from "./Component/WelcomeScreen";
+import LayoutScreen from "./Component/LayoutScreen";
 
 const { Navigator, Screen } = createNativeStackNavigator();
 
@@ -17,6 +18,10 @@ const App = () => {
           options={{
             headerShown: false
           }}
+        />
+        <Screen
+          name="Layout"
+          component={LayoutScreen}
         />
       </Navigator>
     </Container>
