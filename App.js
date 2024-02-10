@@ -22,6 +22,9 @@ const App = () => {
         <Screen
           name="Layout"
           component={LayoutScreen}
+          options={{
+            headerShown: false
+          }}
         />
       </Navigator>
     </Container>
