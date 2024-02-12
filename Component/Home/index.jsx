@@ -7,7 +7,7 @@ const Home = () => {
         <WebView
             source={{ uri: 'https://www.w3schools.com/' }}
             style={{
-                marginTop: 37
+                // marginTop: 37
             }}
         />
     );

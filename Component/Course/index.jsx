@@ -7,7 +7,7 @@ const Course = () => {
         <WebView
             source={{ uri: 'https://www.w3schools.com/react/default.asp' }}
             style={{
-                marginTop: 37
+                // marginTop: 37
             }}
         />
     );

@@ -7,7 +7,7 @@ const Youtube = () => {
         <WebView
             source={{ uri: 'https://www.youtube.com/' }}
             style={{
-                marginTop: 37
+                // marginTop: 37
             }}
         />
     );

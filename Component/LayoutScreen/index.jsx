@@ -6,6 +6,7 @@ import Login from "../Login";
 import Youtube from "../Youtube";
 import Icon from "react-native-vector-icons/Ionicons";
 import Notifications from "../Notifications";
+import { TouchableOpacity } from "react-native";
 
 const { Navigator, Screen } = createBottomTabNavigator();
 
@@ -43,8 +44,28 @@ const LayoutScreen = () => {
             }
         },
         tabBarActiveTintColor: "tomato",
-        tabBarInActiveTintColor: "grey",
-        headerShown: false
+        tabBarInactiveTintColor: "grey",
+        // tabBarActiveBackgroundColor: 'black',
+        headerShown: false,
+        // tabBarBadge: 8,
+        tabBarBadgeStyle: {
+            // backgroundColor: 'green'
+        },
+        tabBarButton: (props) => {
+            return <TouchableOpacity {...props} />
+        },
+        tabBarStyle: {
+            // backgroundColor: 'green',
+            // height: 80,
+        },
+        tabBarItemStyle: {
+            // backgroundColor: 'red',
+            // marginHorizontal: 6,
+            marginVertical: 4
+        },
+        // tabBarLabelPosition: 'beside-icon',
+        // tabBarShowLabel: false,
+        tabBarHideOnKeyboard: true,
     });
 
     return (
@@ -68,9 +89,6 @@ const LayoutScreen = () => {
             <Screen
                 name="Notifications"
                 component={Notifications}
-                options={{
-                    tabBarBadge: 7
-                }}
             />
         </Navigator>
     );
