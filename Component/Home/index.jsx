@@ -1,11 +1,19 @@
-import React from "react";
-import { View } from "react-native";
+import React, { useEffect, useState } from "react";
+import { Modal, View } from "react-native";
 import { Loader, Font, Button, Main, Card } from "../Reusable";
 import { error, info, primary, secondary, success, warning } from "../Reusable/Color";
 
 const Home = () => {
 
-    const Action = ({ price }) => {
+    const [visible, setVisible] = useState(false);
+
+    useEffect(() => {
+        setTimeout(() => {
+            setVisible(true)
+        }, 5000);
+    }, [visible])
+
+    const Action = (price) => {
         return (
             <View style={{
                 flexDirection: 'row',
@@ -14,42 +22,36 @@ const Home = () => {
             }}>
                 <Font size={'md'}>$ {price}</Font>
                 <Button size={'sm'}
-                    onPress={() => alert('react')}
-                >Enroll Now</Button>
+                    onPress={() => setVisible(false)}
+                >Close Modal</Button>
             </View>
         )
     }
 
     return (
         <Main>
-            <View style={{
-                padding: 20
-            }}>
-                <Card
-                    image={require('../../assets/welcomeImages/a.png')}
-                    title={'React JS'}
-                    description={'Purchase this course at 50% off !'}
-                    action={() => <Action price="3000" />}
-                />
-                <Card
-                    image={require('../../assets/welcomeImages/b.png')}
-                    title={'Angular JS'}
-                    description={'Purchase this course at 50% off !'}
-                    action={() => <Action price="2000" />}
-                />
-                <Card
-                    image={require('../../assets/welcomeImages/c.png')}
-                    title={'Node JS'}
-                    description={'Purchase this course at 50% off !'}
-                    action={() => <Action price="5000" />}
-                />
-                <Card
-                    image={require('../../assets/welcomeImages/d.png')}
-                    title={'MongoDb'}
-                    description={'Purchase this course at 50% off !'}
-                    action={() => <Action price="1000" />}
-                />
-            </View>
+            <Button
+                onPress={() => setVisible(true)}
+            >Open Modal</Button>
+            <Modal
+                visible={visible}
+                transparent={true}
+                animationType="slide"
+            >
+                <View style={{
+                    backgroundColor: 'rgba(0,0,0,0.7)',
+                    flex: 1,
+                    justifyContent: 'center',
+                    padding: 20
+                }}>
+                    <Card
+                        image={require('../../assets/welcomeImages/a.png')}
+                        title={'React JS'}
+                        description={'Enroll in React JS Course'}
+                        action={() => Action(5000)}
+                    />
+                </View>
+            </Modal>
         </Main>
     );
 }
