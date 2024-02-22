@@ -1,9 +1,10 @@
-import React from "react";
+import React, { memo } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 import { primary } from "../Color";
 import { Font } from '../';
 
 const Button = ({ children, backgroundColor = primary, size, color = "white", type }) => {
+    console.log("I AM BUTTON");
     return (
         <TouchableOpacity>
             <View style={{
@@ -24,4 +25,4 @@ const Button = ({ children, backgroundColor = primary, size, color = "white", ty
     );
 }
 
-export default Button;
+export default memo(Button);

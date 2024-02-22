@@ -1,6 +1,6 @@
-import React from "react";
+import React, { memo } from "react";
 import { Image, TouchableOpacity, View } from "react-native";
-import { Button, Font } from "../";
+import { Button, Font, Main } from "../";
 
 const Card = ({
     image = null,
@@ -9,6 +9,7 @@ const Card = ({
     action = null,
     ...rest
 }) => {
+    console.log("I AM CARD");
     return (
         <TouchableOpacity {...rest}>
             <View style={{
@@ -60,4 +61,4 @@ const Card = ({
     );
 }
 
-export default Card;
+export default memo(Main);
