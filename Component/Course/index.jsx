@@ -1,15 +1,15 @@
 import React from "react";
-import { Text } from "react-native";
+import { Text, View } from "react-native";
 import WebView from "react-native-webview";
+import { Card, Main } from "../Reusable";
 
 const Course = () => {
     return (
-        <WebView
-            source={{ uri: 'https://www.w3schools.com/react/default.asp' }}
-            style={{
-                // marginTop: 37
-            }}
-        />
+        <Main>
+            <Card
+                image={require('../../assets/welcomeImages/a.png')}
+            />
+        </Main>
     );
 }
 

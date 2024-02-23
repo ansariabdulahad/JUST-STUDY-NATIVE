@@ -61,4 +61,4 @@ const Card = ({
     );
 }
 
-export default memo(Main);
+export default memo(Card);
