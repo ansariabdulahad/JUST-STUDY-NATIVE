@@ -4,7 +4,6 @@ import { primary } from "../Color";
 import { Font } from '../';
 
 const Button = ({ children, backgroundColor = primary, size, color = "white", type }) => {
-    console.log("I AM BUTTON");
     return (
         <TouchableOpacity>
             <View style={{

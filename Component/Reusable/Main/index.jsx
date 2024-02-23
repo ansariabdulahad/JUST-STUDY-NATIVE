@@ -1,28 +1,14 @@
 import React, { useCallback, useState } from "react";
 import { RefreshControl, ScrollView, View } from "react-native";
 
-const Main = ({ children }) => {
-
-    const [referesh, setReferesh] = useState(false);
-
-    const handleReferesh = useCallback(() => {
-        setReferesh(true);
-        setTimeout(() => {
-            setReferesh(false);
-        }, 5000);
-    }, [referesh]);
+const Main = ({ children, onScroll = null, ...rest }) => {
 
     return (
         <View>
             <ScrollView
+                onScroll={onScroll}
                 refreshControl={
-                    <RefreshControl
-                        refreshing={referesh}
-                        onRefresh={handleReferesh}
-                        // progressBackgroundColor={'grey'}
-                        colors={['red', 'green', 'blue']}
-                        // size={'large'}
-                    />
+                    <RefreshControl {...rest} />
                 }
             >
                 {children}
