@@ -3,76 +3,44 @@ import { Animated, Button, View } from "react-native";
 
 const Login = () => {
 
-    const [finish, setFinish] = useState(false);
-    const height = useRef(new Animated.Value(20)).current; // useref use when you want to change varaibale as muted - means it not render again and again.
-    const width = useRef(new Animated.Value(20)).current;
-    const opacity = useRef(new Animated.Value(0)).current;
+    const fade = useRef(new Animated.Value(0)).current;
 
-    const open = () => { // Animated.parallel & Animated.sequence
-
+    useEffect(() => {
         Animated
-            .sequence([
+            .loop(
                 Animated
-                    .timing(height, {
-                        toValue: 300,
-                        duration: 1000,
-                        useNativeDriver: false
-                    }),
-                Animated
-                    .timing(width, {
-                        toValue: 300,
-                        duration: 1000,
-                        useNativeDriver: false
-                    }),
-                // Animated
-                //     .timing(opacity, {
-                //         toValue: 1,
-                //         duration: 1000,
-                //         useNativeDriver: false
-                //     })
-            ])
-            .start(() => setFinish(true));
-    }
-
-    const close = () => {
-
-        Animated
-            .sequence([
-                Animated
-                    .timing(height, {
-                        toValue: 20,
-                        duration: 1000,
-                        useNativeDriver: false
-                    }),
-                Animated
-                    .timing(width, {
-                        toValue: 20,
-                        duration: 1000,
-                        useNativeDriver: false
-                    }),
-                // Animated
-                //     .timing(opacity, {
-                //         toValue: 0,
-                //         duration: 1000,
-                //         useNativeDriver: false
-                //     })
-            ])
-            .start(() => setFinish(false));
-    }
+                    .sequence([
+                        Animated
+                            .timing(fade, {
+                                toValue: 1,
+                                duration: 500,
+                                useNativeDriver: true
+                            }),
+                        Animated
+                            .delay(1000),
+                        Animated
+                            .timing(fade, {
+                                toValue: 0,
+                                duration: 500,
+                                useNativeDriver: true
+                            })
+                    ]),
+                {
+                    iterations: 10,
+                }
+            )
+            .start()
+    }, []);
 
     return (
         <View>
-            <Button
-                title="Animate Now"
-                onPress={finish ? close : open}
-            />
             <Animated.View
                 style={{
-                    width: width,
-                    height: height,
-                    backgroundColor: 'tomato',
+                    width: 200,
+                    height: 200,
+                    backgroundColor: 'blue',
                     margin: 20,
-                    // opacity: opacity
+                    opacity: fade
                 }}
             />
         </View>
