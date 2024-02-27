@@ -36,19 +36,45 @@ const Login = () => {
         <View>
             <Animated.View
                 style={{
-                    width: anim.interpolate({
+                    width: 50,
+                    height: 50,
+                    backgroundColor: 'red',
+                    transform: [
+                        {
+                            translateX: anim.interpolate({
+                                inputRange: [0, 1, 2, 3, 4],
+                                outputRange: [0, 200, 200, 0, 0]
+                            })
+                        },
+                        {
+                            translateY: anim.interpolate({
+                                inputRange: [0, 1, 2, 3, 4],
+                                outputRange: [0, 0, 200, 200, 0]
+                            })
+                        }
+                    ]
+                }}
+            />
+
+            <Animated.Text
+                style={{
+                    fontSize: anim.interpolate({
                         inputRange: [0, 1, 2, 3, 4],
-                        outputRange: [20, 40, 60, 80, 100]
-                    }),
-                    height: anim.interpolate({
+                        outputRange: [20, 40, 80, 90, 100]
+                    })
+                }}
+            >
+                WELCOME TO JFC
+            </Animated.Text>
+
+            <Animated.Image
+                source={require('../../assets/welcomeImages/a.png')}
+                style={{
+                    width: 200,
+                    height: 200,
+                    opacity: anim.interpolate({
                         inputRange: [0, 1, 2, 3, 4],
-                        outputRange: [20, 40, 60, 80, 100]
-                    }),
-                    margin: 20,
-                    opacity: 1,
-                    backgroundColor: anim.interpolate({
-                        inputRange: [0, 1, 2, 3, 4],
-                        outputRange: ['red', 'green', 'blue', 'yellow', 'black'],
+                        outputRange: [0, 0.2, 0.5, 0.7, 1]
                     })
                 }}
             />
