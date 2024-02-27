@@ -1,84 +1,61 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Animated, Button, Text, View } from "react-native";
+import { Animated, Button, ScrollView, Text, View } from "react-native";
 
 const Login = () => {
 
-    const anim = useRef(new Animated.Value(0)).current;
+    const a = useRef(new Animated.Value(0)).current;
+    const b = useRef(new Animated.Value(0)).current;
+    const c = useRef(new Animated.Value(0)).current;
 
     useEffect(() => {
-        Animated.loop(
-            Animated.sequence([
-                Animated.timing(anim, {
-                    toValue: 1,
-                    useNativeDriver: false
-                }),
-                Animated.timing(anim, {
-                    toValue: 2,
-                    useNativeDriver: false
-                }),
-                Animated.timing(anim, {
-                    toValue: 3,
-                    useNativeDriver: false
-                }),
-                Animated.timing(anim, {
-                    toValue: 4,
-                    useNativeDriver: false
-                })
-            ]),
-            {
-                iterations: 5,
+        Animated.stagger(200, [
+            Animated.timing(a, {
+                toValue: 1,
                 useNativeDriver: true
-            }
-        ).start();
+            }),
+            Animated.timing(b, {
+                toValue: 1,
+                useNativeDriver: true
+            }),
+            Animated.timing(c, {
+                toValue: 1,
+                useNativeDriver: true
+            })
+        ]).start();
     }, []);
 
     return (
-        <View>
-            <Animated.View
-                style={{
-                    width: 50,
-                    height: 50,
-                    backgroundColor: 'red',
-                    transform: [
-                        {
-                            translateX: anim.interpolate({
-                                inputRange: [0, 1, 2, 3, 4],
-                                outputRange: [0, 200, 200, 0, 0]
-                            })
-                        },
-                        {
-                            translateY: anim.interpolate({
-                                inputRange: [0, 1, 2, 3, 4],
-                                outputRange: [0, 0, 200, 200, 0]
-                            })
-                        }
-                    ]
-                }}
-            />
-
-            <Animated.Text
-                style={{
-                    fontSize: anim.interpolate({
-                        inputRange: [0, 1, 2, 3, 4],
-                        outputRange: [20, 40, 80, 90, 100]
-                    })
-                }}
-            >
-                WELCOME TO JFC
-            </Animated.Text>
-
+        <ScrollView style={{
+            padding: 20
+        }}>
             <Animated.Image
                 source={require('../../assets/welcomeImages/a.png')}
                 style={{
-                    width: 200,
-                    height: 200,
-                    opacity: anim.interpolate({
-                        inputRange: [0, 1, 2, 3, 4],
-                        outputRange: [0, 0.2, 0.5, 0.7, 1]
-                    })
+                    width: 390,
+                    height: 240,
+                    marginBottom: 20,
+                    opacity: a
                 }}
             />
-        </View>
+            <Animated.Image
+                source={require('../../assets/welcomeImages/b.png')}
+                style={{
+                    width: 390,
+                    height: 240,
+                    marginBottom: 20,
+                    opacity: b
+                }}
+            />
+            <Animated.Image
+                source={require('../../assets/welcomeImages/c.png')}
+                style={{
+                    width: 390,
+                    height: 240,
+                    marginBottom: 20,
+                    opacity: c
+                }}
+            />
+        </ScrollView>
     );
 }
 
